@@ -8,13 +8,15 @@ This project is a task management application built with modern front-end techno
 - Mark tasks as completed
 - Organize tasks by categories or priorities
 - Responsive design for mobile and desktop
+- Search and filter tasks for better usability
 
 ## Technologies Used
 
 - **React**: Front-end library for building user interfaces
 - **CSS**: Styling the application
 - **JavaScript**: Logic and interactivity
-- **Other Tools**: [Add any additional tools or libraries used]
+- **React Router**: For navigation and routing
+- **Axios**: For handling API requests
 
 ## Installation
 
@@ -46,6 +48,8 @@ This project is a task management application built with modern front-end techno
 
 1. Open the application in your browser at `http://localhost:3000`.
 2. Start creating and managing your tasks.
+3. Use the search bar to find specific tasks.
+4. Filter tasks by category or priority for better organization.
 
 ## Contributing
 

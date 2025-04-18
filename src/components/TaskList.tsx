@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import { Task } from '../context/Task';
+import { Task } from '../context/Task'; // If it's really a "type", move to types/Task.ts
 import Navbar from './NavBar';
-
-
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [task, setTask] = useState<string>('');
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTask(e.target.value);
+  };
+
   const addTask = () => {
-    if (task.trim() === '') return;
+    if (!task.trim()) return;
 
     const newTask: Task = {
-      id: new Date().getTime(),
-      task: task,
+      id: Date.now(),
+      task: task.trim(),
       completed: false,
     };
 
-    setTasks([...tasks, newTask]);
+    setTasks(prev => [...prev, newTask]);
     setTask('');
   };
 
   const removeTask = (id: number): void => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks(tasks.filter((t) => t.id !== id));
     if (editingTaskId === id) {
       setEditingTaskId(null);
       setTask('');
@@ -38,12 +40,13 @@ const TaskList: React.FC = () => {
     }
   };
 
-  const saveEdit = () => {
-    setTasks(
-      tasks.map((t) =>
-        t.id === editingTaskId ? { ...t, task: task } : t
-      )
-    );
+  const saveEdit = (): void => {
+    if (!task.trim() || editingTaskId === null) return;
+
+    setTasks(tasks.map(t => 
+      t.id === editingTaskId ? { ...t, task: task.trim() } : t
+    ));
+
     setEditingTaskId(null);
     setTask('');
   };
@@ -59,9 +62,10 @@ const TaskList: React.FC = () => {
           id="taskInput"
           type="text"
           value={task}
-          onChange={(e) => setTask(e.target.value)}
+          onChange={handleChange}
           placeholder="Enter a task"
         />
+
         {editingTaskId === null ? (
           <button onClick={addTask}>Add Task</button>
         ) : (
