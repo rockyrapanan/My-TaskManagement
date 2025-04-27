@@ -1,58 +1,29 @@
-/* NavBar.css */
+/* src/components/NavBar.css */
 
 .navbar {
-    background-color: #ffffff;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  
-  .navbar-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #2c3e50;
-    text-decoration: none;
-  }
-  
-  .navbar-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .navbar-links a {
-    color: #2c3e50;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: color 0.2s ease-in-out, transform 0.2s;
-    padding: 6px 12px;
-    border-radius: 8px;
-  }
-  
-  .navbar-links a:hover {
-    color: #ffffff;
-    background-color: #4a69bd;
-    transform: scale(1.05);
-  }
-  
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .navbar-links {
-      flex-direction: column;
-      width: 100%;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-  
-    .navbar-links a {
-      width: 100%;
-    }
-  }
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* soft shadow */
+  background-color: #ffffff; /* white background */
+  padding: 10px 20px; /* padding around */
+  border-radius: 12px; /* slightly rounded corners */
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+  color: #2c3e50 !important; /* dark blue title */
+}
+
+.nav-link {
+  color: #3498db !important; /* link color */
+  margin-right: 15px;
+  font-size: 18px;
+}
+
+.nav-link:hover {
+  color: #1d6fa5 !important; /* hover color */
+  text-decoration: underline;
+}
+
+.navbar-toggler {
+  border-color: #3498db;
+}
