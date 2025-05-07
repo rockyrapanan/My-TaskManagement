@@ -13,11 +13,13 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
       <Col>
       <NavBar />
       </Col>
-      <h1>My App</h1>
-      {children}
-      <footer>
-        <NavBarButtons />
-      </footer>
+      <Col className="text-center" style={{ marginTop: "50px" }}>
+        <h1>My Task Management App</h1>
+        {children}
+        <footer>
+          <NavBarButtons />
+        </footer>
+      </Col>
     </Container>
   );
 };

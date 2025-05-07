@@ -42,15 +42,23 @@ export const tasksSlice = createSlice({
         localStorage.setItem('tasks', JSON.stringify(state.tasks)); // Save after toggle
       }
     },
+    // Delete task action.
     deleteTask: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.filter(task => task.id !== action.payload);
       localStorage.setItem('tasks', JSON.stringify(state.tasks)); // Save after delete
-    }
-  }
+    },
+    // Edit task action 05/06/2025
+    editTask: (state, action: PayloadAction<{ id: string; title: string }>) => {
+      const task = state.tasks.find(task => task.id === action.payload.id);
+      if (task) {
+        task.title = action.payload.title;
+        localStorage.setItem('tasks', JSON.stringify(state.tasks)); // Save after edit
+      }
+    }}
 });
 
 // Export actions
-export const { addTask, toggleTask, deleteTask } = tasksSlice.actions;
+export const { addTask, toggleTask, deleteTask, editTask } = tasksSlice.actions;
 
 // Export reducer
 export default tasksSlice.reducer;
